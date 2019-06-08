@@ -47,6 +47,7 @@ const changeEventHandler = evt => {
   drawImageToCanvas(evt.target.files[0]);
 };
 
+imgUpload.addEventListener("change", changeEventHandler);
 const prevent = e => {
   e.preventDefault();
   e.stopPropagation();
