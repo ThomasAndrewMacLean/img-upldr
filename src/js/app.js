@@ -1,4 +1,4 @@
-import "./style.sass";
+import "../stylez/style.sass";
 
 console.log("STARTING 🚀");
 

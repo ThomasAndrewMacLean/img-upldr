@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
   entry: {
-    app: "./src/app.js"
+    app: "./src/js/app.js"
   },
   output: {
     path: path.resolve(__dirname, "dist"),
