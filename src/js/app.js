@@ -27,7 +27,6 @@ const drawImageToCanvas = file => {
       img.width * ratio,
       img.height * ratio
     );
-    
     // ctx.drawImage(img, 0, 0, img.width, img.height);
     // ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, 300, 150);
 
