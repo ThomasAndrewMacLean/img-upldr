@@ -1,19 +1,16 @@
-import "../stylez/style.sass";
-
-console.log("STARTING 🚀");
-
-const imgUpload = document.querySelector("#imgupload");
-const canvas = document.querySelector("#canvas");
-const body = document.querySelector("body");
+import '../stylez/style.sass';
+import './prevent';
+import { canvas, imgUpload, body } from './domElements';
+console.log('STARTING 🚀');
 
 const drawImageToCanvas = file => {
   console.log(file);
   canvas.height = 400;
   canvas.width = 400;
 
-  var ctx = canvas.getContext("2d");
+  var ctx = canvas.getContext('2d');
   var img = new Image();
-  img.onload = function() {
+  img.onload = function () {
     var hRatio = canvas.width / img.width;
     var vRatio = canvas.height / img.height;
     var ratio = Math.min(hRatio, vRatio);
@@ -37,7 +34,7 @@ const drawImageToCanvas = file => {
     var pix = imgd.data;
     console.log(pix);
 
-    const resolution = 1;
+    // const resolution = 1;
 
     for (let i = 0; i < pix.length; i++) {}
   };
@@ -46,37 +43,9 @@ const drawImageToCanvas = file => {
 const changeEventHandler = evt => {
   drawImageToCanvas(evt.target.files[0]);
 };
+imgUpload.addEventListener('change', changeEventHandler);
 
-imgUpload.addEventListener("change", changeEventHandler);
-const prevent = e => {
-  e.preventDefault();
-  e.stopPropagation();
-};
-body.addEventListener("drag", prevent);
-body.addEventListener("dragstart", prevent);
-body.addEventListener("dragend", prevent);
-body.addEventListener("dragover", prevent);
-body.addEventListener("dragenter", prevent);
-body.addEventListener("dragleave", prevent);
-body.addEventListener("drop", prevent);
-
-body.addEventListener("dragover", function() {
-  body.classList.add("is-dragover");
-});
-
-body.addEventListener("dragenter", function() {
-  body.classList.add("is-dragover");
-});
-body.addEventListener("dragleave", function() {
-  body.classList.remove("is-dragover");
-});
-body.addEventListener("dragend", function() {
-  body.classList.remove("is-dragover");
-});
-body.addEventListener("drop", function() {
-  body.classList.remove("is-dragover");
-});
-body.addEventListener("drop", function(e) {
+body.addEventListener('drop', function (e) {
   let file = e.dataTransfer.files[0];
   drawImageToCanvas(file);
 });
