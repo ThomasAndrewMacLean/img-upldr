@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pIc-uPLDr</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section id="page">
+        <form id="form-file" class="center" action="">
+            <input type="file" name="image" id="imgupload" onchange="changeEventHandler(event);" />
+            <label for="imgupload" id="imgupload-btn">
+                upload image
+            </label>
+        </form>
+        <canvas id="canvas" height="400" width="400" class="center"></canvas>
+    </section>
+</body>
+<script src="script.js"></script>
+
+</html>
