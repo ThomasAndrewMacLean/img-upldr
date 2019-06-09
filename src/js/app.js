@@ -1,6 +1,12 @@
 import '../stylez/style.sass';
 import './prevent';
-import { canvas, imgUpload, body, imageElement } from './domElements';
+import {
+  canvas,
+  imgUpload,
+  body,
+  imageElement,
+  randomPic
+} from './domElements';
 console.log('STARTING 🚀');
 
 const url = 'https://afh7v9mdo0.execute-api.eu-west-1.amazonaws.com/latest/';
@@ -69,7 +75,7 @@ const drawImageToCanvas = file => {
       method: 'POST',
       mode: 'no-cors',
       body: formData
-    })
+    });
   };
   img.src = URL.createObjectURL(file);
 };
@@ -87,15 +93,23 @@ if (imgUpload) {
 
 // getimages
 
+var images = [];
 if (imageElement) {
   fetch(url + 'data')
     .then(j => j.json())
     .then(data => {
       console.log(data);
-      const dataWithImages = data.filter(x => x.imageUrl);
-      var randomImage =
-        dataWithImages[Math.floor(Math.random() * dataWithImages.length)];
+      images = data.filter(x => x.imageUrl);
+      var randomImage = images[Math.floor(Math.random() * images.length)];
 
       imageElement.src = randomImage.imageUrl;
     });
+}
+
+if (randomPic) {
+  randomPic.addEventListener('click', () => {
+    var randomImage = images[Math.floor(Math.random() * images.length)];
+
+    imageElement.src = randomImage.imageUrl;
+  });
 }
