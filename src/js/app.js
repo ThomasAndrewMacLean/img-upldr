@@ -70,11 +70,6 @@ const drawImageToCanvas = file => {
       mode: 'no-cors',
       body: formData
     })
-      .then(response => response.json())
-      .catch(error => console.error('Error:', error))
-      .then(
-        response => console.log('response:', JSON.stringify(response)) // clear this uploadPhotoInput
-      );
   };
   img.src = URL.createObjectURL(file);
 };
