@@ -1,18 +1,18 @@
-import "../stylez/style.sass";
-import "./prevent";
-import { canvas, imgUpload, body, imageElement } from "./domElements";
-console.log("STARTING 🚀");
+import '../stylez/style.sass';
+import './prevent';
+import { canvas, imgUpload, body, imageElement } from './domElements';
+console.log('STARTING 🚀');
 
-const url = "https://afh7v9mdo0.execute-api.eu-west-1.amazonaws.com/latest/";
+const url = 'https://afh7v9mdo0.execute-api.eu-west-1.amazonaws.com/latest/';
 
 const drawImageToCanvas = file => {
   console.log(file);
   canvas.height = 400;
   canvas.width = 400;
 
-  var ctx = canvas.getContext("2d");
+  var ctx = canvas.getContext('2d');
   var img = new Image();
-  img.onload = function() {
+  img.onload = function () {
     var hRatio = canvas.width / img.width;
     var vRatio = canvas.height / img.height;
     var ratio = Math.min(hRatio, vRatio);
@@ -41,17 +41,18 @@ const drawImageToCanvas = file => {
     for (let i = 0; i < pix.length; i++) {}
 
     // const imageToSend = canvas.toDataURL();
-    const urlUpload = url + "image-upload";
+    const urlUpload = url + 'image-upload';
     var formData = new FormData();
-    formData.append("image", file);
+    formData.append('image', file);
     fetch(urlUpload, {
-      method: "POST",
+      method: 'POST',
+      mode: 'no-cors',
       body: formData
     })
       .then(response => response.json())
-      .catch(error => console.error("Error:", error))
+      .catch(error => console.error('Error:', error))
       .then(
-        response => console.log("response:", JSON.stringify(response)) // clear this uploadPhotoInput
+        response => console.log('response:', JSON.stringify(response)) // clear this uploadPhotoInput
       );
   };
   img.src = URL.createObjectURL(file);
@@ -60,9 +61,9 @@ const changeEventHandler = evt => {
   drawImageToCanvas(evt.target.files[0]);
 };
 if (imgUpload) {
-  imgUpload.addEventListener("change", changeEventHandler);
+  imgUpload.addEventListener('change', changeEventHandler);
 
-  body.addEventListener("drop", function(e) {
+  body.addEventListener('drop', function (e) {
     let file = e.dataTransfer.files[0];
     drawImageToCanvas(file);
   });
@@ -71,7 +72,7 @@ if (imgUpload) {
 // getimages
 
 if (imageElement) {
-  fetch(url + "data")
+  fetch(url + 'data')
     .then(j => j.json())
     .then(data => {
       console.log(data);
