@@ -37,6 +37,20 @@ const drawImageToCanvas = file => {
     // const resolution = 1;
 
     for (let i = 0; i < pix.length; i++) {}
+
+    // const imageToSend = canvas.toDataURL();
+    const url = 'https://afh7v9mdo0.execute-api.eu-west-1.amazonaws.com/latest/image-upload';
+    var formData = new FormData();
+    formData.append('image', file);
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.json())
+      .catch(error => console.error('Error:', error))
+      .then(
+        response => console.log('response:', JSON.stringify(response)) // clear this uploadPhotoInput
+      );
   };
   img.src = URL.createObjectURL(file);
 };
