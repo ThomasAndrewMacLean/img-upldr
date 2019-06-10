@@ -108,7 +108,14 @@ if (imageElement) {
 
 if (randomPic) {
   randomPic.addEventListener('click', () => {
-    var randomImage = images[Math.floor(Math.random() * images.length)];
+    let randomCount = 0;
+    let randomImage = {};
+    while (imageElement.src === randomImage.imageUrl || randomCount < 4) {
+      console.log(randomCount);
+
+      randomImage = images[Math.floor(Math.random() * images.length)];
+      randomCount++;
+    }
 
     imageElement.src = randomImage.imageUrl;
   });
