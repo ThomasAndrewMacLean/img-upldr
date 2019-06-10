@@ -7,7 +7,7 @@ import {
   imageElement,
   randomPic
 } from './domElements';
-import { URL } from './utils';
+import { baseUrl } from './utils';
 
 console.log('STARTING 🚀');
 
@@ -68,7 +68,7 @@ const drawImageToCanvas = file => {
     const imageToSend = canvas.toDataURL();
     // Convert Base64 image to binary
     var fileToSend = dataURItoBlob(imageToSend);
-    const urlUpload = URL + 'image-upload';
+    const urlUpload = baseUrl + 'image-upload';
     var formData = new FormData();
     formData.append('image', fileToSend);
     fetch(urlUpload, {
@@ -95,7 +95,7 @@ if (imgUpload) {
 
 var images = [];
 if (imageElement) {
-  fetch(URL + 'images')
+  fetch(baseUrl + 'images')
     .then(j => j.json())
     .then(data => {
       console.log(data);
