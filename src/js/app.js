@@ -7,9 +7,9 @@ import {
   imageElement,
   randomPic
 } from './domElements';
-console.log('STARTING 🚀');
+import { URL } from './utils';
 
-const url = 'https://afh7v9mdo0.execute-api.eu-west-1.amazonaws.com/latest/';
+console.log('STARTING 🚀');
 
 const drawImageToCanvas = file => {
   console.log(file);
@@ -68,7 +68,7 @@ const drawImageToCanvas = file => {
     const imageToSend = canvas.toDataURL();
     // Convert Base64 image to binary
     var fileToSend = dataURItoBlob(imageToSend);
-    const urlUpload = url + 'image-upload';
+    const urlUpload = URL + 'image-upload';
     var formData = new FormData();
     formData.append('image', fileToSend);
     fetch(urlUpload, {
@@ -95,7 +95,7 @@ if (imgUpload) {
 
 var images = [];
 if (imageElement) {
-  fetch(url + 'data')
+  fetch(URL + 'images')
     .then(j => j.json())
     .then(data => {
       console.log(data);
