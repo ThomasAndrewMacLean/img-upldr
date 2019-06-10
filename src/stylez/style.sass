@@ -1,5 +1,13 @@
 @import colours
-    
+
+   
+  
+@font-face
+  font-family: 'icomoon'
+  src: font-url('icomoon-free/icomoon.eot')
+  src: font-url('icomoon-free/icomoon.eot?#iefix') format("embedded-opentype"), font-url('icomoon-free/icomoon.svg#icomoon') format("svg"), font-url('icomoon-free/icomoon.woff') format("woff"), font-url('icomoon-free/icomoon.ttf') format("truetype")
+  font-weight: normal
+  font-style: normal
     
 * 
     margin: 0
@@ -18,6 +26,8 @@ body
     background: white!important
     transition: background 0.3s ease
     border: 0.2rem solid $dark-colour
+    max-width: 350px
+    margin: auto
 
 a
     color: $dark-colour
@@ -98,3 +108,14 @@ nav
 footer
     position: absolute
     bottom: 1rem
+
+[class^="icon-"]:before, [class*=" icon-"]:before
+  font-family: 'icomoon'
+  font-style: normal
+  speak: none
+  font-weight: normal
+  line-height: 1
+  -webkit-font-smoothing: antialiased
+
+.icon-camera:before
+  content: "\e90f"

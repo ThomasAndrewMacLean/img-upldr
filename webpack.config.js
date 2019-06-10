@@ -11,7 +11,7 @@ const config = {
     filename: '[name].bundle.js'
   },
   devServer: {
-    port: 3000
+    port: 5500
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -45,7 +45,8 @@ const config = {
           'css-loader',
           'sass-loader' // compiles Sass to CSS
         ]
-      }
+      },
+      { test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/, loader: 'file-loader' }
     ]
   }
 };

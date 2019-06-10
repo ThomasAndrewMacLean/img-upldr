@@ -6,8 +6,10 @@ html(lang="en")
             a(href="pics") pics
         main(id="page")
             form(id="form-file", class="center", action="")
-                input(type="file",name="image", id="imgupload")
+                input(type="file",name="image", id="imgupload", accept="image/x-png,image/gif,image/jpeg")
                 label(for="imgupload" id="imgupload-btn") upload image
+                i(class="icon-camera")
+                i(class="camera")
             canvas(id="canvas", height="400", width="400", class="center")
 
             include includes/footer.pug
