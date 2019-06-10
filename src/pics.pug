@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        title Document
-    body
+    include includes/head.pug
+    body(style="opacity:0;background:red")
+        nav
+            a(href="/") home
         main(id="page")
-            nav
-                a(href="/") home
                 
             button(id="random-btn") random Pics
             img(id="image")
+            include includes/footer.pug

@@ -1,3 +1,6 @@
+@import colours
+    
+    
 * 
     margin: 0
     padding: 0
@@ -9,16 +12,15 @@ html
     font-family: 'Courier New', Courier, monospace
     opacity: 1!important
     overflow: hidden
-    height: calc( 100% - 1rem)
+    height: calc( 100% - 3.2rem)
 
 body
-    background: white
-    border: 0.2rem solid #333333
+    background: white!important
+    border: 0.2rem solid $dark-colour
 
 html
     padding: 1rem
-    background: rgba(lightgreen, 0.5)
-
+    background: $body-colour
 
 #page 
     display: flex
@@ -34,18 +36,34 @@ html
 
 #imgupload-btn 
     cursor: pointer
-    border: 1px solid lightblue
+    border: 0.2rem solid $button-border
     padding: 2rem
     font-size: 2rem
+    box-shadow: 7px 7px 0px 0px lightpink
 
+#imgupload-btn:active 
+    box-shadow: none
+    transform: translate(7px, 7px)
+    outline: none
+#imgupload-btn:focus 
+    outline: none
+  
+#random-btn:active 
+    box-shadow: none
+    transform: translate(7px, 7px)
+    outline: none
+#random-btn:focus 
+    outline: none
+    
 #random-btn 
     cursor: pointer
-    border: 1px solid lightblue
+    border: 0.2rem solid $button-border
     padding: 2rem
     font-family: inherit
     font-size: 2rem
     background: white
-
+    box-shadow: 7px 7px 0px 0px lightpink
+    transition: transform 0.1s ease
 
 .center 
     display: flex
@@ -56,7 +74,7 @@ html
 canvas 
     height: 50%
     margin: 2rem
-    border: 1px solid lightcoral
+    //border: 1px solid lightcoral
 
 
 .is-dragover 
@@ -66,3 +84,12 @@ canvas
 img     
     height: 50vh
     width: auto
+
+nav     
+    background: $nav-colour
+    padding: 1rem
+    border-bottom: 0.2rem solid $dark-colour
+
+footer
+    position: absolute
+    bottom: 1rem
