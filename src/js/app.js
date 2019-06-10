@@ -5,7 +5,8 @@ import {
   imgUpload,
   body,
   imageElement,
-  randomPic
+  randomPic,
+  loveBtn
 } from './domElements';
 import { baseUrl } from './utils';
 
@@ -118,5 +119,44 @@ if (randomPic) {
     }
 
     imageElement.src = randomImage.imageUrl;
+  });
+}
+
+function generateUUID () {
+  var d = new Date();
+  var k = d.getTime();
+  var str = k.toString(16).slice(1);
+  var UUID = 'xxxx-xxxx-4xxx-yxxx-xzx'.replace(/[xy]/g, function (c) {
+    var r = (Math.random() * 16) | 0;
+    let v;
+    v = c === 'x' ? r : (r & 3) | 8;
+    return v.toString(16);
+  });
+  var newString = UUID.replace(/[z]/, str);
+  return newString;
+}
+
+// Get and or set ID
+const cookies = document.cookie;
+let myId;
+if (cookies.includes('uniqueImgUpldrId')) {
+  myId = cookies.split('uniqueImgUpldrId=')[1].split(';')[0];
+} else {
+  myId = generateUUID();
+  document.cookie = 'uniqueImgUpldrId=' + myId;
+}
+
+if (loveBtn) {
+  loveBtn.addEventListener('click', () => {
+    fetch(baseUrl + 'love', {
+      method: 'POST', // or 'PUT'
+      body: JSON.stringify({
+        personId: myId,
+        imageId: imageElement.src
+      }), // data can be `string` or {object}!
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
   });
 }
