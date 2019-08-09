@@ -17,6 +17,7 @@ const config = {
   },
   plugins: [
     new CopyPlugin([{ from: 'src/assets', to: 'assets' }]),
+    new CopyPlugin([{ from: 'src/_redirects', to: '' }]),
     new HtmlWebpackPlugin({
       template: './src/index.pug'
     }),
